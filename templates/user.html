@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+{% if msg %}
+    <script>
+        alert("{{msg}}");
+    </script>
+{% endif %}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">user id</th>
+            <th scope="col">user name</th>
+            <th scope="col">user surname</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users%}
+        <tr>
+            <td> {{user.id}}</td>
+            <td> {{user.name}}</td>
+            <td> {{user.surname}}</td>
+            <td>
+                <a href="/edit_user?id={{user.id}}" title="edit button">
+                    <button type="button" class="btn btn-warning" name="btn_edit_user">Edit
+                    </button>
+                </a>
+                <a href="/delete_user?id={{user.id}}" title="delete button">
+                    <button type="button" class="btn btn-danger" name="btn_delete_user">Delete
+                    </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <a href="/new_user" title="new user button">
+                    <button type="button" class="btn btn-success" name="btn_new_professor">New user</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<script src="{{ url_for('static', filename='js/skill.js') }}"></script>-->
+
+{% endblock %}

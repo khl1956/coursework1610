@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+flask = "*"
+object-mapper = "*"
+flask-sqlalchemy = "*"
+psycopg2 = "*"
+jinja2 = "*"
+wtforms = "*"
+flask-wtf = "*"
+plotly = "*"
+gunicorn = "*"
+
+[requires]
+python_version = "3.7"

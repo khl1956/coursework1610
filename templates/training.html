@@ -1,0 +1,78 @@
+{% extends "index_user.html" %}
+
+
+
+{% if msg %}
+    <script>
+        alert("{{msg}}");
+    </script>
+{% endif %}
+
+{% block content %}
+<div class="table-responsive">
+
+    {% if trainings %}
+        {% for date in trainings.keys() %}
+            <table class="table">
+                <h2>{{date}}</h2>
+                <thead>
+                <tr>
+                    <th scope="col">plan title</th>
+                    <th scope="col">date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for training in trainings[date] %}
+                <tr>
+                    <td> {{training.plan_entity.title}}</td>
+                    <td> {{training.date}}</td>
+                    <td>
+                        <a href="/open_training?id={{training.id}}"
+                           title="delete button">
+                            <button type="button" class="btn btn-success" name="btn_delete_user" >
+                                Open
+                            </button>
+                        </a>
+                        <a href="/edit_training?id={{training.id}}"
+                           title="edit button">
+                            <button type="button" class="btn btn-warning" name="btn_edit_user" >
+                                Edit
+                            </button>
+                        </a>
+                        <a href="/delete_training?id={{training.id}}"
+                           title="delete button">
+                            <button type="button" class="btn btn-danger" name="btn_delete_user" >
+                                Delete
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+
+
+    {% else %}
+        <h1>No trainings</h1>
+    {% endif %}
+
+
+    <a href="/new_training" title="new admin button">
+        <button type="button" class="btn btn-success" name="btn_new_admin">New training</button>
+    </a>
+    {% if not show %}
+    <a href="/training?show=True" title="new admin button">
+        <button type="button" class="btn btn-success" name="btn_new_admin">Show previous trainings</button>
+    </a>
+    {% else %}
+    <a href="/training" title="new admin button">
+        <button type="button" class="btn btn-success" name="btn_new_admin">Don't show previous trainings</button>
+    </a>
+    {% endif %}
+
+</div>
+
+<!--<script src="{{ url_for('static', filename='js/skill.js') }}"></script>-->
+
+{% endblock %}

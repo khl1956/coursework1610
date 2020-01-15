@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+{% if msg %}
+    <script>
+        alert("{{msg}}");
+    </script>
+{% endif %}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">exercise id</th>
+            <th scope="col">exercise title</th>
+            <th scope="col">exercise muscle_type</th>
+            <th scope="col">exercise description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for exercise in exercises%}
+        <tr>
+            <td> {{exercise.id}}</td>
+            <td> {{exercise.title}}</td>
+            <td> {{exercise.muscle_type}}</td>
+            <td> {{exercise.description}}</td>
+            <td>
+                <a href="/edit_exercise?id={{exercise.id}}" title="edit button">
+                    <button type="button" class="btn btn-warning" name="btn_edit_user">
+                        Edit
+                    </button>
+                </a>
+                <a href="/delete_exercise?id={{exercise.id}}" title="delete button">
+                    <button type="button" class="btn btn-danger" name="btn_delete_user">
+                        Delete
+                    </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <a href="/new_exercise" title="new exercise button">
+                    <button type="button" class="btn btn-success" name="btn_new_student">New exercise</button>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<script src="{{ url_for('static', filename='js/skill.js') }}"></script>-->
+
+{% endblock %}

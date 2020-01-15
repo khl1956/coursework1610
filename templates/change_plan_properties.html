@@ -1,0 +1,63 @@
+{% extends "index_user.html" %}
+
+{% block content %}
+
+{% if msg %}
+    <script>
+        alert("{{msg}}");
+    </script>
+{% endif %}
+
+<div class="col-md-6 mx-auto">
+
+    <!-- form card login -->
+    <div class="card rounded-0">
+
+        <div class="card-header">
+            <h3 class="mb-0">{{form_name}}</h3>
+        </div>
+        <div class="card-body">
+
+            <form class="form"  action = "/{{action}}" method = post >
+                {{ form.hidden_tag() }}
+
+
+                <div class="form-group">
+                    {{ form.weight.label }}
+                    {{ form.weight(class_="form-control") }}
+
+                    {% if form.weight.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in form.weight.errors %}
+                        <div>{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {%endif%}
+                </div>
+
+                <div class="form-group">
+                    {{ form.count.label }}
+                    {{ form.count(class_="form-control") }}
+
+
+                    {% if form.count.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in form.count.errors %}
+                        <div>{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {%endif%}
+                </div>
+
+                {{ form.submit(class_="btn btn-success") }}
+            </form>
+        </div>
+        <!--/card-block-->
+    </div>
+    <!-- /form card login -->
+
+</div>
+
+</div>
+
+{% endblock %}

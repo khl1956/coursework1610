@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">login</th>
+            <th scope="col">password</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for admin in admins%}
+        <tr>
+            <td> {{admin.login}}</td>
+            <td> {{admin.password}}</td>
+
+            <td>
+                <a href="/edit_admin?admin_id={{admin.id}}" title="edit button">
+                    <button type="button" class="btn btn-warning" name="btn_edit_user" >
+                        Edit
+                    </button>
+                </a>
+                <a href="/delete_admin?admin_id={{admin.id}}" title="delete button">
+                    <button type="button" class="btn btn-danger" name="btn_delete_user" >
+                        Delete
+                    </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <a href="/new_admin" title="new admin button">
+                    <button type="button" class="btn btn-success" name="btn_new_admin">New admin</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<script src="{{ url_for('static', filename='js/skill.js') }}"></script>-->
+
+{% endblock %}

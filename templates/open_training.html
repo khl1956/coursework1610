@@ -1,0 +1,41 @@
+{% extends "index_user.html" %}
+
+{% block content %}
+<div class="table-responsive">
+    <h2>Plan title: {{plan_title}}</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">exercise_entity</th>
+            <th scope="col">weight</th>
+            <th scope="col">plan_exercises count</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for exercise in plan_exercises%}
+        <tr>
+            <td> title: {{exercise.exercise_entity.title}}, muscle type: {{exercise.exercise_entity.muscle_type}}:
+                description: {{exercise.exercise_entity.description}}</td>
+            <td> {{exercise.weight}}</td>
+            <td> {{exercise.count}}</td>
+            <td>
+                <a href="/change_plan_properties?id={{exercise.id}}"
+                   title="edit button">
+                    <button type="button" class="btn btn-warning" name="btn_edit_user" >
+                        Edit weight and count
+                    </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="/training">
+        <button type="button" class="btn btn-success" name="btn_new_admin">Back</button>
+    </a>
+</div>
+
+<!--<script src="{{ url_for('static', filename='js/skill.js') }}"></script>-->
+
+{% endblock %}

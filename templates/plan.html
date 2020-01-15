@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+{% if msg %}
+    <script>
+        alert("{{msg}}");
+    </script>
+{% endif %}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">plan id</th>
+            <th scope="col">plan title</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for plan in plans%}
+        <tr>
+            <td> {{plan.id}}</td>
+            <td> {{plan.title}}</td>
+
+            <td>
+                <a href="/edit_plan?id={{plan.id}}"
+                   title="edit button">
+                    <button type="button" class="btn btn-warning" name="btn_edit_discipline">Edit
+                    </button>
+                </a>
+                <a href="/delete_plan?id={{plan.id}}"
+                   title="delete button">
+                    <button type="button" class="btn btn-danger" name="btn_delete_discipline">Delete
+                    </button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <a href="/new_plan" title="new discipline button">
+                    <button type="button" class="btn btn-success" name="btn_new_discipline">New plan</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

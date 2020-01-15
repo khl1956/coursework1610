@@ -1,0 +1,96 @@
+
+
+{% extends "index.html" %}
+
+{% block content %}
+
+<!--https://www.codeply.com/go/nhbdi2FkJm-->
+
+{% if msg %}
+    <script>
+        alert("{{msg}}");
+    </script>
+{% endif %}
+
+<div class="col-md-6 mx-auto">
+
+    <!-- form card login -->
+    <div class="card rounded-0">
+
+        <div class="card-header">
+            <h3 class="mb-0">{{form_name}}</h3>
+        </div>
+        <div class="card-body">
+
+            <form class="form"  action = "/{{action}}" method = post >
+                {{ form.hidden_tag() }}
+
+
+                <div class="form-group">
+                    {{ form.name.label }}
+                    {{ form.name(class_="form-control") }}
+
+                    {% if form.name.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in form.name.errors %}
+                        <div>{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {%endif%}
+                </div>
+
+                <div class="form-group">
+                    {{ form.surname.label }}
+                    {{ form.surname(class_="form-control") }}
+
+                    {% if form.surname.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in form.surname.errors %}
+                        <div>{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {%endif%}
+                </div>
+
+                <div class="form-group">
+                    {{ form.login.label }}
+                    {{ form.login(class_="form-control") }}
+
+                    {% if form.login.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in form.login.errors %}
+                        <div>{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {%endif%}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password.label }}
+                    {{ form.password(class_="form-control") }}
+
+
+                    {% if form.password.errors%}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in form.password.errors %}
+                        <div>{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {%endif%}
+                </div>
+
+                {{ form.submit(class_="btn btn-success") }}
+            </form>
+        </div>
+        <!--/card-block-->
+    </div>
+    <!-- /form card login -->
+
+</div>
+
+</div>
+
+
+
+
+{% endblock %}
